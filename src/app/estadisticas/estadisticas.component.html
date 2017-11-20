@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h3 class="text-center">Delegacion </h3>
+    <select [(ngModel)]="delegacion" class="form-control" (ngModelChange)="getDel()">
+          <option *ngFor="let delegacion of delegaciones" [ngValue]="delegacion.id_delegacion">
+               {{delegacion.id_delegacion}} - {{delegacion.denominacion}}
+          </option>
+    </select>
+    <br>
+  </div>
+  <div class="col-sm-6">
+    <h3 class="text-center">Municipio</h3>
+    <select [(ngModel)]="municipio" class="form-control"(ngModelChange)="getMun()">
+      <option [ngValue]="-1"><span>TODOS</span></option>
+      <option *ngFor="let municipio  of municipios" [ngValue]="municipio.id_municipio" >
+        <span>{{municipio.id_municipio}}</span> - {{municipio.denominacion}} </option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <h3 class="text-center">Ejercicio </h3>
+    <select [(ngModel)]="ejercicio" class="form-control" (ngModelChange)="getEj()">
+          <option [ngValue]="2017">2017</option>
+          <option [ngValue]="2016">2016</option>
+          <option [ngValue]="2015">2015</option>
+          <option [ngValue]="2014">2014</option>
+    </select>
+    <br>
+  </div>
+  <div class="col-sm-6">
+    <h3 class="text-center">Tipo de Área</h3>
+    <select [(ngModel)]="tipo_area" class="form-control"(ngModelChange)="getType($event)">
+      <option value="DISTRITO">DISTRITO</option>
+      <option value="MUNICIPIO">MUNICIPIO</option>
+      <option value="GRUPOMUNICIPIOS">GRUPOMUNICIPIOS</option>
+    </select>
+  </div>
+</div>
+
+<div  class="row btns-row btns-same-width-lg text-center">
+    <div class="col-sm-6 col-12">
+        <button type="button" class="btn btn-success btn-lg" (click)="getAreas()"><i class="fa fa-check"></i> Calcular Áreas</button>
+      </div>
+  <div class="col-sm-6 ">
+    <button type="button" [disabled]="check" class="btn btn-danger btn-lg" (click)="exportCsv()"> Descargar CSV</button>
+  </div>
+</div>
+
+
